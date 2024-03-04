@@ -34,7 +34,7 @@ from detectron2.engine.train_loop import HookBase
 import logging
 
 
-sys.path.append('/scratch/tjian/PythonProject/deep_plastic_SSL/')
+sys.path.append('/scratch/tjian/PythonProject/deep_pollutant_SSL/')
 
 
 @ROI_HEADS_REGISTRY.register()
@@ -67,6 +67,9 @@ class BestCheckpointer(HookBase):
         # metric_name="bbox/APs"
         # metric_name="bbox/APm"
         # metric_name="bbox/APl"
+
+        # metric_name="segm/AP50"
+
         
         if metric_name in self.trainer.storage._history:
             eval_metric, batches = self.trainer.storage.history(metric_name)._data[-1]
@@ -106,34 +109,33 @@ def main(args):
 
     # register my custom dataset, if your dataset is in COCO format:
        
-    # GJO_train_2628
-    register_coco_instances("GJO_train_2628", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2628/annotations/SL_train_2628.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2628/train/")
-    register_coco_instances("GJO_val_2628", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2628/annotations/SL_val_282.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2628/val/")
+    # Pollutant_train_100%
+    register_coco_instances("Pollutant_train_100%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_100%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_100%/train/")
+    register_coco_instances("Pollutant_val_100%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_100%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_100%/val/")
     
-    # GJO_train_2076
-    register_coco_instances("GJO_train_2076", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2076/annotations/SL_train_2076.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2076/train/")
-    register_coco_instances("GJO_val_2076", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2076/annotations/SL_val_224.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_2076/val/")
+    # Pollutant_train_80%
+    register_coco_instances("Pollutant_train_80%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_80%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_80%/train/")
+    register_coco_instances("Pollutant_val_80%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_80%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_80%/val/")
     
-    # GJO_train_1594
-    register_coco_instances("GJO_train_1594", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1594/annotations/SL_train_1594.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1594/train/")
-    register_coco_instances("GJO_val_1594", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1594/annotations/SL_val_171.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1594/val/")
+    # Pollutant_train_60%
+    register_coco_instances("Pollutant_train_60%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_60%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_60%/train/")
+    register_coco_instances("Pollutant_val_60%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_60%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_60%/val/")
     
-    # GJO_train_1013
-    register_coco_instances("GJO_train_1013", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1013/annotations/SL_train_1013.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1013/train/")
-    register_coco_instances("GJO_val_1013", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1013/annotations/SL_val_115.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_1013/val/")
+    # Pollutant_train_40%
+    register_coco_instances("Pollutant_train_40%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_40%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_40%/train/")
+    register_coco_instances("Pollutant_val_40%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_40%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_40%/val/")
     
-    # GJO_train_527
-    register_coco_instances("GJO_train_527", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_527/annotations/SL_train_527.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_527/train/")
-    register_coco_instances("GJO_val_527", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_527/annotations/SL_val_62.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_527/val/")
-
-    # GJO_train_282
-    register_coco_instances("GJO_train_282", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_282/annotations/SL_train_282.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_282/train/")
-    register_coco_instances("GJO_val_282", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_282/annotations/SL_val_27.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_282/val/")
+    # Pollutant_train_20%
+    register_coco_instances("Pollutant_train_20%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_20%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_20%/train/")
+    register_coco_instances("Pollutant_val_20%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_20%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_20%/val/")
     
-    # GJO_train_124
-    register_coco_instances("GJO_train_124", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_124/annotations/SL_train_124.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_124/train/")
-    register_coco_instances("GJO_val_124", {}, "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_124/annotations/SL_val_13.json", "/scratch/tjian/Data/GJO_SSL/tiles_224/SL_train_124/val/")
-
+    # Pollutant_train_10%
+    register_coco_instances("Pollutant_train_10%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_10%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_10%/train/")
+    register_coco_instances("Pollutant_val_10%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_10%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_10%/val/")
+    
+    # Pollutant_train_5%
+    register_coco_instances("Pollutant_train_5%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_5%/annotations/train.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_5%/train/")
+    register_coco_instances("Pollutant_val_5%", {}, "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_5%/annotations/val.json", "/scratch/tjian/Data/Pollutant_SSL/labeled/SL_train_5%/val/")
     
     
     # setup the config file

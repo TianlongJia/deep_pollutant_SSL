@@ -13,7 +13,7 @@ import sys
 from typing import Any, List
 import datetime
 
-sys.path.append('/scratch/tjian/PythonProject/deep_plastic_SSL/')
+sys.path.append('/scratch/tjian/PythonProject/deep_pollutant_SSL/')
 
 from vissl.utils.distributed_launcher import (
     launch_distributed,
@@ -30,9 +30,9 @@ from vissl.utils.slurm import is_submitit_available
 
 from vissl.data.dataset_catalog import VisslDatasetCatalog
 
-train_path="/scratch/tjian/Data/GJO_SSL/images_tiles_224_pretrain/train"
-val_path="/scratch/tjian/Data/GJO_SSL/images_tiles_224_pretrain/val"
-VisslDatasetCatalog.register_data(name="GJO", data_dict={"train": train_path, "test": val_path})
+train_path="/scratch/tjian/Data/Pollutant_SSL/pretrain/train"
+val_path="/scratch/tjian/Data/Pollutant_SSL/pretrain/val"
+VisslDatasetCatalog.register_data(name="Pollutant", data_dict={"train": train_path, "test": val_path})
 # print("############# Registered my_dataset ###############")
 
 
