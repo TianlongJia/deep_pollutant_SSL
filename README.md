@@ -16,6 +16,14 @@ Acknowledgement:
 This project was inspired by the work of Facebook AI Research and the [Vissl v0.1.6](https://github.com/facebookresearch/vissl) library. 
 Learn more about VISSL at [documentation](https://vissl.readthedocs.io). And see the [projects/](projects/) for some projects built on top of VISSL.
 
+## Dataset
+
+The TUD-IPB dataset is a new labelled dataset for detecting the interaction between microparticles and biomass in biological wastewater treatment process. This dataset and further details can be found in:
+
+```bash
+  https://doi.org/10.5281/zenodo.13374998
+```
+
 ## Installation
 
 See [`INSTALL.md`](./INSTALL.md).
@@ -29,7 +37,7 @@ See [`INSTALL.md`](./INSTALL.md).
 
 ## Citing this project or paper
 
-If you find this project is useful in your research or wish to refer to the paper, please use the following BibTeX entry.
+If you find this code and dataset are useful in your research or wish to refer to the paper, please use the following BibTeX entry.
 
 ```BibTeX
 @article{jia2025semi,
@@ -42,6 +50,12 @@ If you find this project is useful in your research or wish to refer to the pape
   publisher={Elsevier}
 }
 ```
+
+## Authors
+
+- [@Tianlong Jia](https://github.com/TianlongJia)
+- [@Jing Yu](https://github.com/yyyuj)
+
 
 ## Contact
 
